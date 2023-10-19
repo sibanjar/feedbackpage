@@ -10,7 +10,7 @@ class FrequentQuestions extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(right: 10.0,left: 5,top: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(5),
         color: Color(0xFFf0f1f3),
       ),
       child: Column(
@@ -26,7 +26,8 @@ class FrequentQuestions extends StatelessWidget {
                    child: const Text('view all',style: TextStyle(fontSize: 12,color: Color(0xFF6B7376))))
              ],
            ),
-          Questions(question: questions)
+          Questions(question: questions),
+          SizedBox(height: 16,)
         ],
       ),
     );
@@ -39,6 +40,7 @@ class Questions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
 
     // return ListTile(
     //   // shape:  Border.all(width: 1,color: const Color(0xFF000000)),
@@ -67,24 +69,41 @@ class Questions extends StatelessWidget {
     //   ),
     // );
 
-  return ListView(
-    // itemCount: question.length, // Replace with the actual length of your text list
-    // itemBuilder: (context, index) {
-      children:[ Container(
-            padding: const EdgeInsets.only(left: 20,top: 15,right: 10,bottom: 15),
-            margin: EdgeInsets.only(left: 10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 0.1,color:Colors.black),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(question[0],style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500)),
-                const Icon(Icons.arrow_forward_ios,size: 14,),
-              ],
-            ),
-          )]
-  );
+  return ListView.builder(
+    shrinkWrap: true,
+    itemCount: question.length, // Replace with the actual length of your text list
+    itemBuilder: (context, index) {
+      return Container(
+        height: 55,
+        padding: const EdgeInsets.only(
+        left: 8, top: 16, right: 16, bottom: 8),
+        margin: const EdgeInsets.only(left: 10,),
+        decoration: BoxDecoration(
+          border: const Border(
+            right: BorderSide(width: 0.1, color: Colors.black),
+            top:  BorderSide(width: 0.1, color: Colors.black),
+            left:  BorderSide(width: 0.1, color: Colors.black),
+            bottom:  BorderSide(width: 0.1, color: Colors.black),
+          ),
+            boxShadow: [
+        BoxShadow(
+        color: Color(0xFFf0f1f3).withOpacity(0.5),
+        spreadRadius: 1,
+        blurRadius: 1,
+        offset: Offset(0, 0), // changes position of shadow
+      ),],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(question[0], style: const TextStyle(
+                fontSize: 14, fontWeight: FontWeight.w400)),
+            const Icon(Icons.arrow_forward_ios, size: 12,color: Color(0xFF6B7376),),
+          ],
+        ),
+      );
+    }
+    );
 
   }
 }

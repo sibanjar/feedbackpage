@@ -15,19 +15,19 @@ class FeedBackHome extends StatelessWidget {
     'which business is good for me?',
     ];
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: const Color(0xFFFCFCFF),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0,bottom: 20,right: 15,left: 15),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Logo(),
-              const SizedBox(height: 20,),
               FrequentQuestions(questions: questions,),
-              const SizedBox(height: 20,),
               Container(
-                height: 100,
+                height: 108,
                 decoration: BoxDecoration(
+                  border: Border.all(width: 1,style: BorderStyle.solid,color: Color(0xFFF0F1F3)),
                   borderRadius: BorderRadius.circular(12),
                   color: const Color(0xFFFCFCFF),
                 ),
@@ -43,11 +43,11 @@ class FeedBackHome extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {  },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.white,
+                          primary: Color(0xFF00658e),
                           minimumSize: const Size(double.infinity, 36),
                         ),
                         child: const Center(
-                            child: Text('Contact',style: TextStyle(color: Colors.black,fontSize: 12,fontWeight: FontWeight.w500,),)
+                            child: Text('Contact',style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w500,),)
                         ),
                       ),
                     )
