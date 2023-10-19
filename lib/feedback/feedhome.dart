@@ -54,7 +54,6 @@ class FeedBackHome extends StatelessWidget {
                   ],
                 ),
               ),
-
             ],
           ),
         ),

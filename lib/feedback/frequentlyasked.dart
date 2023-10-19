@@ -8,7 +8,7 @@ class FrequentQuestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(right: 10.0,left: 5,top: 10),
+      padding: EdgeInsets.only(left: 16,right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Color(0xFFf0f1f3),
@@ -26,7 +26,16 @@ class FrequentQuestions extends StatelessWidget {
                    child: const Text('view all',style: TextStyle(fontSize: 12,color: Color(0xFF6B7376))))
              ],
            ),
-          Questions(question: questions),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
+            child: Container(
+              decoration:  BoxDecoration(
+                    border: Border.all(
+                      width: 0.1, color: Colors.black,
+                    ),
+              borderRadius: BorderRadius.circular(5)),
+                child: Questions(question: questions)),
+          ),
           SizedBox(height: 16,)
         ],
       ),
@@ -71,34 +80,30 @@ class Questions extends StatelessWidget {
 
   return ListView.builder(
     shrinkWrap: true,
-    itemCount: question.length, // Replace with the actual length of your text list
+    itemCount: question.length,
     itemBuilder: (context, index) {
       return Container(
-        height: 55,
-        padding: const EdgeInsets.only(
-        left: 8, top: 16, right: 16, bottom: 8),
-        margin: const EdgeInsets.only(left: 10,),
-        decoration: BoxDecoration(
-          border: const Border(
-            right: BorderSide(width: 0.1, color: Colors.black),
-            top:  BorderSide(width: 0.1, color: Colors.black),
-            left:  BorderSide(width: 0.1, color: Colors.black),
-            bottom:  BorderSide(width: 0.1, color: Colors.black),
-          ),
-            boxShadow: [
-        BoxShadow(
-        color: Color(0xFFf0f1f3).withOpacity(0.5),
-        spreadRadius: 1,
-        blurRadius: 1,
-        offset: Offset(0, 0), // changes position of shadow
-      ),],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // padding: const EdgeInsets.only(
+        // left: 8, top: 16, right: 16, bottom: 16),
+        // margin: const EdgeInsets.only(left: 10,),
+
+      child: Column(
           children: [
-            Text(question[0], style: const TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w400)),
-            const Icon(Icons.arrow_forward_ios, size: 12,color: Color(0xFF6B7376),),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(question[0], style: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w400)),
+                  const Icon(Icons.arrow_forward_ios, size: 12,color: Color(0xFF6B7376),),
+                ],
+              ),
+            ),
+            Divider(
+              height: 1,
+              thickness: 1,
+            )
           ],
         ),
       );
